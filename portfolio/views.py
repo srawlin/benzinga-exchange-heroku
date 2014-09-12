@@ -118,6 +118,7 @@ def place_order(request, symbol, order_type, quantity):
 # == Application View Functions ===
 @login_required
 def exchange(request, symbol):
+	symbol = symbol.lower()
 	flash_message = None
 	company_name = None
 	bid_price = None
