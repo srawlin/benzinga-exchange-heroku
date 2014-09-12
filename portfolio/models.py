@@ -1,3 +1,7 @@
+# Benzinga Exchange Code Challenge
+# Written by Steve Rawlinson
+# September 12, 2014
+
 from decimal import *
 
 from django.db import models

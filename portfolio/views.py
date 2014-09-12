@@ -1,6 +1,6 @@
 # Benzinga Exchange Code Challenge
 # Written by Steve Rawlinson
-# September 3, 2014
+# September 12, 2014
 
 from django import forms
 from django.shortcuts import render
@@ -41,20 +41,20 @@ def logout_view_old(request):
 
 
 def index(request):
-	# get portfolio values after any orders placed
+	""" show the user their portfolio """
 	if request.user.is_authenticated():
-		# Do something for authenticated users.
 		stock_list = None
 		if request.user:
 			stock_list = Holdings.objects.filter(owner=request.user)
 		return render(request, 'portfolio/exchange.html', {'stock_list': stock_list})
 	
+	# redirect non authenticated users to register
 	return HttpResponseRedirect("/portfolio/register")
 
 
 # === Helper Functions ===
 def get_symbol(symbol):
-	# lookup that symbol with Benzinga API
+	"""lookup that symbol with Benzinga API"""
 	response = urllib2.urlopen('http://data.benzinga.com/stock/' + symbol)
 	data = json.load(response)
 	
@@ -66,6 +66,7 @@ def get_symbol(symbol):
 
 @login_required
 def place_order(request, symbol, order_type, quantity):
+	"""returns a tuple, (<success status>: Boolean, <error message>: String)"""
 	user = request.user.userprofile	
     	
 	try:
@@ -118,7 +119,10 @@ def place_order(request, symbol, order_type, quantity):
 # == Application View Functions ===
 @login_required
 def exchange(request, symbol):
-	symbol = symbol.lower()
+	"""buying and selling of stocks
+	   also displays the users portfolio"""
+	
+	symbol = symbol.lower()  # always use lowercase for symbols internally, but allow user input of uppercase
 	flash_message = None
 	company_name = None
 	bid_price = None

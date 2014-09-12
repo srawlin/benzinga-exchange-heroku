@@ -24,10 +24,9 @@
 						<p>Ask Price: ${{ ask_price |floatformat:"2" }}</p>
 						<input id="id_symbol" name="symbol" type="hidden" value="{{ symbol }}" />
 						<p><label for="id_quantity">Quantity:</label> <input id="id_quantity" name="quantity" type="number" />{{ form.quantity.errors }}</p>
-						<input id="id_order_type" name="order_type" type="hidden" value="buy" />
-					
-        {% csrf_token %}
-        <input type="submit" value=" Buy " class="btn btn-success">
+						<input id="id_order_type" name="order_type" type="hidden" value="buy" />					
+						{% csrf_token %}
+						<input type="submit" value=" Buy " class="btn btn-success">
 					</form>
 				</div>
 			</div>	
@@ -52,30 +51,30 @@
 
 
 <div class="row" style="height:600px;">
-<h2>Real-time Chart and News</h2>
-<!-- TradingView Widget BEGIN -->
-<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
-<script type="text/javascript">
-new TradingView.widget({
-  "autosize": true,
-  "symbol": "{{ symbol }}",
-  "interval": "D",
-  "timezone": "exchange",
-  "theme": "White",
-  "style": "1",
-  "toolbar_bg": "#f1f3f6",
-  "details": true,
-  "news": [
-    "stocktwits",
-    "headlines"
-  ],
-  "hideideas": true,
-  "show_popup_button": true,
-  "popup_width": "1000",
-  "popup_height": "650"
-});
-</script>
-<!-- TradingView Widget END -->
+	<h2>Real-time Chart and News</h2>
+	<!-- TradingView Widget BEGIN -->
+	<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+	<script type="text/javascript">
+	new TradingView.widget({
+	  "autosize": true,
+	  "symbol": "{{ symbol }}",
+	  "interval": "D",
+	  "timezone": "exchange",
+	  "theme": "White",
+	  "style": "1",
+	  "toolbar_bg": "#f1f3f6",
+	  "details": true,
+	  "news": [
+		"stocktwits",
+		"headlines"
+	  ],
+	  "hideideas": true,
+	  "show_popup_button": true,
+	  "popup_width": "1000",
+	  "popup_height": "650"
+	});
+	</script>
+	<!-- TradingView Widget END -->
 </div>
 
 {% else %}
@@ -87,8 +86,6 @@ new TradingView.widget({
     
     <br/>Use the <b>Lookup</b> above to find a stock.</p>
 {% endif %}
-
-
 
 {% endblock %}
 
@@ -138,5 +135,4 @@ new TradingView.widget({
 				
 			</div>
 		</div>
-
 {% endblock %}
