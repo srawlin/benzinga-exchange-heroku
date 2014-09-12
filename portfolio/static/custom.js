@@ -1,3 +1,6 @@
+// Yahoo Finance symbol autosuggest from:
+// http://mindsockets.blogspot.ca/2012/07/yahoo-finance-api-with-jquery.html
+
 var YAHOO = {
         Finance: {
             SymbolSuggest: {}

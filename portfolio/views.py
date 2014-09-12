@@ -66,7 +66,8 @@ def get_symbol(symbol):
 
 @login_required
 def place_order(request, symbol, order_type, quantity):
-	"""returns a tuple, (<success status>: Boolean, <error message>: String)"""
+	""" Executes the actual buy or sell market order
+	    returns a tuple, (<success status>: Boolean, <error message>: String)"""
 	user = request.user.userprofile	
     	
 	try:
